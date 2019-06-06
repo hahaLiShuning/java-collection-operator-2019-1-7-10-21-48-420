@@ -25,11 +25,22 @@ public class Reduce {
     }
 
     public double getOrderedMedian() {
-        throw new NotImplementedException();
+        if (arrayList.size() % 2 == 0) {
+            return (double) (arrayList.get(arrayList.size() / 2) + arrayList.get(arrayList.size() / 2 - 1)) / 2;
+        } else {
+            return arrayList.get(arrayList.size() / 2);
+        }
     }
 
     public int getFirstEven() {
-        throw new NotImplementedException();
+        int result = 0;
+        for (Integer i : this.arrayList) {
+            if (i % 2 == 0) {
+                result = i;
+                break;
+            }
+        }
+        return result;
     }
 
     public int getIndexOfFirstEven() {
