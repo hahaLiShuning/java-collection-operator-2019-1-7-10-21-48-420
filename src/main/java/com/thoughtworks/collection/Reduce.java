@@ -1,7 +1,5 @@
 package com.thoughtworks.collection;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -66,7 +64,17 @@ public class Reduce {
     }
 
     public Double getMedianInLinkList(SingleLink singleLink) {
-        throw new NotImplementedException();
+        for (Integer i : this.arrayList) {
+            singleLink.addTailPointer(i);
+        }
+        if (this.arrayList.size() % 2 == 0) {
+            int firstVal = (int)singleLink.getNode(this.arrayList.size() / 2);
+            int secondVal = (int)singleLink.getNode(this.arrayList.size() / 2 + 1);
+            return (firstVal + secondVal) / 2.0;
+        } else {
+            Integer node = (Integer) singleLink.getNode(this.arrayList.size() / 2 + 1);
+            return node.doubleValue();
+        }
     }
 
     public int getLastOdd() {
