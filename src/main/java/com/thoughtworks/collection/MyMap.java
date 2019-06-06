@@ -1,9 +1,9 @@
 package com.thoughtworks.collection;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MyMap {
 
@@ -17,22 +17,44 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-        throw new NotImplementedException();
+        return this.array.stream().map(x -> x * 3).collect(Collectors.toList());
     }
 
     public List<String> mapLetter() {
-        throw new NotImplementedException();
+        return this.array.stream().map(x -> letterList.get(x - 1)).collect(Collectors.toList());
     }
 
     public List<String> mapLetters() {
-        throw new NotImplementedException();
+
+        return this.array.stream().map(x -> {
+            int temp = x;
+            String s = "";
+            if (temp > 26) {
+                while (temp > 26) {
+                    int quotient = temp / 26;
+                    int remainder = temp % 26;
+                    int i, j;
+                    if (quotient < 26) {
+                        i = remainder == 0 ? quotient - 2 : quotient - 1;
+                        j = remainder - 1 >= 0 ? remainder - 1 : 25;
+                        s = s.concat(letterList.get(i).concat(letterList.get(j)));
+                        break;
+                    } else {
+                        temp = quotient;
+                    }
+                }
+            } else {
+                s = letterList.get(x - 1);
+            }
+            return s;
+        }).collect(Collectors.toList());
     }
 
     public List<Integer> sortFromBig() {
-        throw new NotImplementedException();
+        return this.array.stream().sorted(Comparator.comparingInt(Integer::intValue).reversed()).collect(Collectors.toList());
     }
 
     public List<Integer> sortFromSmall() {
-        throw new NotImplementedException();
+        return this.array.stream().sorted().collect(Collectors.toList());
     }
 }
