@@ -13,15 +13,15 @@ public class Reduce {
     }
 
     public int getMaximum() {
-        throw new NotImplementedException();
+        return this.arrayList.stream().max(Integer::compareTo).get();
     }
 
     public double getMinimum() {
-        throw new NotImplementedException();
+        return this.arrayList.stream().min(Integer::compareTo).get();
     }
 
     public double getAverage() {
-        throw new NotImplementedException();
+        return this.arrayList.stream().mapToInt(x -> x).summaryStatistics().getAverage();
     }
 
     public double getOrderedMedian() {
