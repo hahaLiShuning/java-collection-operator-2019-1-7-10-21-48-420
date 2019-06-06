@@ -3,6 +3,7 @@ package com.thoughtworks.collection;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Reduce {
 
@@ -33,25 +34,21 @@ public class Reduce {
     }
 
     public int getFirstEven() {
-        int result = 0;
         for (Integer i : this.arrayList) {
             if (i % 2 == 0) {
-                result = i;
-                break;
+                return i;
             }
         }
-        return result;
+        throw new NoSuchElementException();
     }
 
     public int getIndexOfFirstEven() {
-        int result = 0;
         for (int i = 0; i < this.arrayList.size(); i++) {
             if (this.arrayList.get(i) % 2 == 0) {
-                result = i;
-                break;
+                return i;
             }
         }
-        return result;
+        throw new NoSuchElementException();
     }
 
     public boolean isEqual(List<Integer> arrayList) {
@@ -73,10 +70,20 @@ public class Reduce {
     }
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+        for (int i = this.arrayList.size() - 1; i >= 0; i--) {
+            if (this.arrayList.get(i) % 2 != 0) {
+                return this.arrayList.get(i);
+            }
+        }
+        throw new NoSuchElementException();
     }
 
     public int getIndexOfLastOdd() {
-        throw new NotImplementedException();
+        for (int i = this.arrayList.size() - 1; i >= 0; i--) {
+            if (this.arrayList.get(i) % 2 != 0) {
+                return i;
+            }
+        }
+        throw new NoSuchElementException();
     }
 }
