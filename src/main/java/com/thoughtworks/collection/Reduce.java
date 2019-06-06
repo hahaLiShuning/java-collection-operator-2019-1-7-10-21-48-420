@@ -44,11 +44,28 @@ public class Reduce {
     }
 
     public int getIndexOfFirstEven() {
-        throw new NotImplementedException();
+        int result = 0;
+        for (int i = 0; i < this.arrayList.size(); i++) {
+            if (this.arrayList.get(i) % 2 == 0) {
+                result = i;
+                break;
+            }
+        }
+        return result;
     }
 
     public boolean isEqual(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        boolean flag = true;
+        if (this.arrayList.size() != arrayList.size()) {
+            flag = false;
+        }
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i) != this.arrayList.get(i)) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
     public Double getMedianInLinkList(SingleLink singleLink) {
